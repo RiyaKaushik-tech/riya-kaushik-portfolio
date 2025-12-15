@@ -1,15 +1,22 @@
 [
   {
+    "title": "TaskPulse -(Project Management Tool)",
+    "description": "Spearheaded full-stack development of a scalable MERN stack TaskPulse platform, implementing real-time notifications (Socket.io) and optimization techniques (caching, pagination) to reduce API latency and boost throughput.",
+    "github": "https://github.com/riya1807pro/datasync-dashboard",
+    "image": "/datasync.png",
+    "skills": ["React/Vite", "Redux", "Node.js/Express", "MongoDB"]
+  },
+  {
     "title": "Dashboard - Real-time Data Sync",
-    "description": "A Next.js + TypeScript dashboard that delivers real-time movie trends and top news articles. Includes user authentication, personalized feeds by genre & category, and API integrations (TMDB + NewsAPI).",
+    "description": "Engineered a dynamic, TypeScript-based Personalized Content Dashboard using Next.js, integrating external APIs (News/TMDB) and Redux Toolkit (RTK) for centralized state management and real-time data visualization.",
     "live": "https://datasync-dashboard.vercel.app/",
     "github": "https://github.com/riya1807pro/datasync-dashboard",
     "image": "/datasync.png",
-    "skills": ["Next.js 15", "TypeScript", "TailwindCSS", "Redux Toolkit + RTK Query", "Clerk", "NewsAPI / TMDB API", "Vercel"]
+    "skills": ["React", "Next.js", "Typescript", "Tailwind CSS"]
   },
   {
     "title": "React Redux CRUD (Posts App)",
-    "description": "A lightweight CRUD application to create, edit, and delete posts with Redux Toolkit state management and localStorage persistence.",
+    "description": "Developed a lightweight CRUD application using React and Redux Toolkit (RTK) to manage posts, implementing reliable state management and localStorage persistence for data continuity.",
     "live": "https://redux-posts-app-lake.vercel.app/",
     "github": "https://github.com/riya1807pro/redux-posts-app",
     "image": "/crud_app.png",
@@ -17,10 +24,10 @@
   },
   {
     "title": "My Developer Portfolio",
-    "description": "Personal portfolio website built with Next.js, Tailwind CSS, and Framer Motion. Highlights skills, projects, and interactive UI with smooth animations.",
+    "description": "Designed and deployed a full-stack, responsive Personal Portfolio using Next.js and Framer Motion to showcase projects with high-performance animations and an integrated backend service for client communication.",
     "live": "https://cryptotracke.vercel.app/",
     "github": "https://github.com/riya1807pro/riya-kaushik-portfolio",
     "image": "/profile.png",
     "skills": ["Next.js", "Tailwind CSS", "Framer Motion"]
   }
-]
+] 

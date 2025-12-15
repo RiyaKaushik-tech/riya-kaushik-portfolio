@@ -5,13 +5,12 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 
 const aboutPoints = [
-  "💻 Frontend Developer skilled in building responsive and interactive web apps using React, Next.js & TailwindCSS",
-  "📚 Strong foundation in Computer Engineering from GBN Govt. Polytechnic, Nilokheri",
-  "⚡ Developed 20+ projects demonstrating expertise in UI/UX and full-stack development",
-  "🔥 Solved 70+ Data Structures & Algorithms problems on LeetCode and continuously improving problem-solving skills",
-  "🌐 Practical experience with TRPC, Redux Toolkit, and modern web development tools",
-  "🚀 Passionate about learning new technologies, optimizing performance, and delivering user-focused solutions",
-];
+  "Enhanced: Expertly building responsive and interactive web applications using a modern frontend ecosystem, including React, Next.js, and advanced styling with Tailwind CSS.",
+  "Enhanced: Possesses a strong academic foundation in Computer Science from GBN Government Polytechnic, Nilokheri, with relevant coursework in Web Development and Data Structures.",
+  "Enhanced: Successfully developed and deployed 20+ projects, demonstrating comprehensive full-stack capability and a strong focus on intuitive UI/UX design and clean architecture.",
+  "Enhanced: Achieved proficiency in Data Structures and Algorithms (DSA) by successfully solving 100+ problems (e.g., LeetCode), reflecting continuous improvement in logical reasoning and efficient problem-solving.",
+  "Enhanced: Practical experience includes implementing robust state management with Redux Toolkit (RTK) and utilizing modern development tools like TRPC, Git, and Postman.",
+"Enhanced: Passionate about continuous learning, dedicated to optimizing application performance (caching, latency reduction), and delivering measurable, user-focused solutions."];
 
 export default function About() {
   return (
@@ -34,8 +33,7 @@ export default function About() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          A motivated frontend developer who enjoys crafting modern, scalable,
-          and user-friendly applications with a focus on clean design and performance.
+         Highly motivated Full-Stack MERN Developer specializing in crafting modern, scalable, and user-centric applications with a strong commitment to clean design and performance optimization.
         </motion.p>
 
         {/* Bullet Points with Animation */}

@@ -15,13 +15,13 @@ export default function Hero() {
   useEffect(() => {
     let p = 0, l = 0, t = 0;
     const interval = setInterval(() => {
-      if (p < 20) p++;
-      if (l < 70) l++;
+      if (p <  20) p++;
+      if (l < 100) l++;
       if (t < 10) t++;
       setProjects(p);
       setLeetcode(l);
       setTech(t);
-      if (p === 20 && l === 70 && t === 10) clearInterval(interval);
+      if (p === 20 && l === 100 && t === 10) clearInterval(interval);
     }, 60);
   }, []);
 
@@ -50,21 +50,26 @@ export default function Hero() {
           transition={{ duration: 1 }}
         >
           Hi, I'm Riya Kaushik 👋 <br />
-          <span className="text-gray-300">Frontend Developer & Designer</span>
+          <span className="text-gray-300">Full Stack Software Developer</span>
         </motion.h1>
 
         {/* Subheading */}
-        <motion.p
-          className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 1 }}
-        >
-          I craft interactive, aesthetic, and professional web experiences using{" "}
-          <span className="text-teal-400 font-semibold">
-            React, Next.js & TailwindCSS
-          </span>
-        </motion.p>
+       <motion.p
+  className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.3, duration: 1 }}
+>
+  I craft interactive, aesthetic, and professional web experiences using{" "}
+  <span className="text-teal-400 font-semibold">
+    React, Next.js & Tailwind CSS
+  </span>{" "}
+  for the frontend, and building scalable backends with the{" "}
+  <span className="text-teal-400 font-semibold">
+    MERN Stack (Node.js/Express & MongoDB)
+  </span>
+  .
+</motion.p>
 
         {/* Buttons */}
         <motion.div

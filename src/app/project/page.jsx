@@ -6,41 +6,38 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    title: "Dashboard - Real-time Data Sync",
-    description:
-      "DashSync is a Next.js + TypeScript web application that aggregates trending movies and *top news articles, personalised to each user’s *preferences (genre + category) and authentication.",
-    live: "https://datasync-dashboard.vercel.app/",
-    github: "https://github.com/riya1807pro/datasync-dashboard",
-    image: "/datasync.png",
-    skills: [
-      "Next.js 15",
-      "TypeScript",
-      "TailwindCSS",
-      "Redux Toolkit + RTK Query",
-      "Clerk",
-      "NewsAPI / TMDB API",
-      "vercel",
-    ],
+    "title": "TaskPulse -(Project Management Tool)",
+    "description": "Spearheaded full-stack development of a scalable MERN stack TaskPulse platform, implementing real-time notifications (Socket.io) and optimization techniques (caching, pagination) to reduce API latency and boost throughput.",
+    "github": "https://github.com/riya1807pro/datasync-dashboard",
+    "image": "/taskManager.png",
+    "skills": ["React/Vite", "Redux", "Node.js/Express", "MongoDB"]
   },
   {
-    title: "React Redux CRUD (Posts App)",
-    description:
-      "A CRUD app to create, edit, delete posts using Redux Toolkit and localStorage.",
-    live: "https://redux-posts-app-lake.vercel.app/",
-    github: "https://github.com/riya1807pro/redux-posts-app",
-    image: "/crud_app.png",
-    skills: ["React", "Redux Toolkit", "Tailwind CSS", "Vite"],
+    "title": "Dashboard - Real-time Data Sync",
+    "description": "Engineered a dynamic, TypeScript-based Personalized Content Dashboard using Next.js, integrating external APIs (News/TMDB) and Redux Toolkit (RTK) for centralized state management and real-time data visualization.",
+    "live": "https://datasync-dashboard.vercel.app/",
+    "github": "https://github.com/riya1807pro/datasync-dashboard",
+    "image": "/datasync.png",
+    "skills": ["React", "Next.js", "Typescript", "Tailwind CSS"]
   },
   {
-    title: "My Developer Portfolio",
-    description:
-      "My personal portfolio website built with Next.js, Tailwind CSS, Framer Motion.",
-    live: "https://cryptotracke.vercel.app/",
-    github: "https://github.com/riya1807pro/riya-kaushik-portfolio",
-    image: "/profile.png",
-    skills: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    "title": "React Redux CRUD (Posts App)",
+    "description": "Developed a lightweight CRUD application using React and Redux Toolkit (RTK) to manage posts, implementing reliable state management and localStorage persistence for data continuity.",
+    "live": "https://redux-posts-app-lake.vercel.app/",
+    "github": "https://github.com/riya1807pro/redux-posts-app",
+    "image": "/crud_app.png",
+    "skills": ["React", "Redux Toolkit", "Tailwind CSS", "Vite"]
   },
-];
+  {
+    "title": "My Developer Portfolio",
+    "description": "Designed and deployed a full-stack, responsive Personal Portfolio using Next.js and Framer Motion to showcase projects with high-performance animations and an integrated backend service for client communication.",
+    "live": "https://cryptotracke.vercel.app/",
+    "github": "https://github.com/riya1807pro/riya-kaushik-portfolio",
+    "image": "/profile.png",
+    "skills": ["Next.js", "Tailwind CSS", "Framer Motion"]
+  }
+] 
+
 
 export default function Projects() {
   return (
