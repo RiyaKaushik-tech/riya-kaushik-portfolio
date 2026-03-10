@@ -52,3 +52,49 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Print-friendly styles for resume */
+@media print {
+  @page {
+    size: A4;
+    margin: 0.5cm;
+  }
+  
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+  
+  .print\:p-0 {
+    padding: 0 !important;
+  }
+  
+  .print\:py-6 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  
+  .print\:mb-6 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Prevent page breaks inside elements */
+  section, .border-l-4 {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Ensure colors are preserved */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
