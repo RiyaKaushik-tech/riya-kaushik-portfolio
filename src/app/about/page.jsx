@@ -1,261 +1,117 @@
-"use client"
-import { useRef, useMemo, Suspense } from "react";
+"use client";
+
 import { motion } from "framer-motion";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, MeshWobbleMaterial, Torus, Sphere } from "@react-three/drei";
-import { User, Code2, Layers, Compass } from "lucide-react";
-import * as THREE from "three";
 
-/* ─── 3D Scene Components ─── */
-
-function GlowingSphere() {
-  const ref = useRef<THREE.Mesh>(null);
-  useFrame((state) => {
-    ref.current.rotation.x = state.clock.elapsedTime * 0.15;
-    ref.current.rotation.y = state.clock.elapsedTime * 0.2;
-  });
-  return (
-    <Float speed={2} rotationIntensity={0.4} floatIntensity={1.2}>
-      <Sphere ref={ref} args={[1, 64, 64]} position={[0, 0, 0]}>
-        <MeshDistortMaterial
-          color="#06b6d4"
-          emissive="#06b6d4"
-          emissiveIntensity={0.3}
-          roughness={0.2}
-          metalness={0.8}
-          distort={0.35}
-          speed={1.5}
-          transparent
-          opacity={0.85}
-        />
-      </Sphere>
-    </Float>
-  );
-}
-
-function FloatingTorus() {
-  const ref = useRef<THREE.Mesh>(null);
-  useFrame((state) => {
-    ref.current.rotation.x = state.clock.elapsedTime * 0.3;
-    ref.current.rotation.z = state.clock.elapsedTime * 0.15;
-  });
-  return (
-    <Float speed={1.5} rotationIntensity={0.6} floatIntensity={0.8}>
-      <Torus ref={ref} args={[1.6, 0.35, 32, 64]} position={[0, 0, -1]}>
-        <MeshWobbleMaterial
-          color="#a855f7"
-          emissive="#7c3aed"
-          emissiveIntensity={0.2}
-          roughness={0.3}
-          metalness={0.7}
-          factor={0.3}
-          speed={1}
-          transparent
-          opacity={0.7}
-        />
-      </Torus>
-    </Float>
-  );
-}
-
-function OrbitingParticles() {
-  const ref = useRef<THREE.Points>(null);
-  const count = 80;
-  const positions = useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      const angle = (i / count) * Math.PI * 2;
-      const radius = 2.2 + Math.random() * 0.6;
-      pos[i * 3] = Math.cos(angle) * radius;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 1.5;
-      pos[i * 3 + 2] = Math.sin(angle) * radius;
-    }
-    return pos;
-  }, []);
-
-  useFrame((state) => {
-    ref.current.rotation.y = state.clock.elapsedTime * 0.08;
-    ref.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.05) * 0.2;
-  });
-
-  return (
-    <points ref={ref}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-      </bufferGeometry>
-      <pointsMaterial size={0.04} color="#06b6d4" transparent opacity={0.6} sizeAttenuation />
-    </points>
-  );
-}
-
-function Scene() {
-  return (
-    <>
-      <ambientLight intensity={0.3} />
-      <pointLight position={[5, 5, 5]} intensity={0.8} color="#06b6d4" />
-      <pointLight position={[-5, -3, 3]} intensity={0.4} color="#a855f7" />
-      <GlowingSphere />
-      <FloatingTorus />
-      <OrbitingParticles />
-    </>
-  );
-}
-
-/* ─── About Data ─── */
-
-const aboutStory = [
+const aboutData = [
   {
-    title: "Who I Am",
-    description:
-      "A full-stack developer who enjoys turning complex ideas into clear, useful digital experiences with a strong focus on quality and user satisfaction.",
-    icon: <User className="h-5 w-5" />,
+    role: "Full Stack Developer",
+    content: "Specializing in the integration of client-side logic with robust server environments. I focus on managing data flow, API orchestration, and ensuring synchronization between frontend and database layers.",
+    stat: "System Architecture",
+    point: 20 
   },
   {
-    title: "What I Build",
-    description:
-      "Modern web applications with React, Next.js, APIs, and scalable backend systems that are practical and built for real business needs.",
-    icon: <Code2 className="h-5 w-5" />,
+    role: "Frontend Developer",
+    content: "Building high-fidelity user interfaces with a focus on optimized rendering and accessibility. I implement responsive designs that ensure a seamless experience across all device standards.",
+    stat: "Interface Precision",
+    point: 80 
   },
   {
-    title: "How I Build",
-    description:
-      "Through clean architecture, reusable components, thoughtful UI/UX, and performance-minded engineering from day one.",
-    icon: <Layers className="h-5 w-5" />,
+    role: "React Developer",
+    content: "Developing modular, type-safe component libraries. I leverage modern React patterns, including Hooks and Context API, to create maintainable and scalable frontend architectures.",
+    stat: "Modular Logic",
+    point: 40
   },
   {
-    title: "Where I'm Heading",
-    description:
-      "Toward building larger, high-impact products and growing into a developer who leads with both technical depth and product vision.",
-    icon: <Compass className="h-5 w-5" />,
-  },
+    role: "Web App Developer",
+    content: "Transforming functional requirements into performance-driven web products. My process includes SEO optimization, cross-browser compatibility, and performance auditing.",
+    stat: "Platform Standards",
+    point: 60
+  }
 ];
 
-/* ─── Main Page ─── */
+export default function AboutPage() {
+  const graphPath = `M0 ${aboutData[0].point} L 250 ${aboutData[0].point} L 500 ${aboutData[1].point} L 750 ${aboutData[2].point} L 1000 ${aboutData[3].point}`;
 
-const About = () => {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background py-20 sm:py-28">
-      {/* Ambient background glows */}
-      <div className="pointer-events-none absolute inset-0">
-        <motion.div
-          className="absolute -left-[5%] top-[8%] h-[280px] w-[280px] rounded-full blur-[100px]"
-          style={{ background: "radial-gradient(circle, hsl(var(--glow-cyan) / 0.15), transparent 70%)" }}
-          animate={{ y: [0, -15, 0], scale: [1, 1.06, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-[15%] right-[-3%] h-[220px] w-[220px] rounded-full blur-[80px]"
-          style={{ background: "radial-gradient(circle, hsl(var(--glow-purple) / 0.12), transparent 70%)" }}
-          animate={{ y: [0, 12, 0], scale: [1, 1.08, 1] }}
-          transition={{ duration: 10, delay: 2, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
+    <section className="relative min-h-screen bg-black text-white py-32 overflow-hidden px-6">
+      
+      {/* Background Lighting */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-indigo-500/10 blur-[150px] -z-10 rounded-full" />
 
-      {/* 3D Canvas — right side on large screens, behind content on small */}
-      <div className="pointer-events-none absolute inset-0 lg:left-[45%] lg:right-0 lg:top-0 lg:bottom-0">
-        <div className="h-full w-full opacity-70 lg:opacity-100">
-          <Suspense fallback={null}>
-            <Canvax camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 1.5]}>
-              <Scene />
-            </Canvas>
-          </Suspense>
-        </div>
-      </div>
-
-      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl"
-        >
-          <p className="text-sm font-medium uppercase tracking-[0.3em] text-muted-foreground">
-            About
-          </p>
-          <h1 className="mt-4 text-4xl font-light leading-tight sm:text-5xl lg:text-6xl">
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Professional. Calm. Focused.
-            </span>
-          </h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg"
-          >
-            A quick look at what I do, how I approach my work, and where I'm
-            heading as a developer — built on clarity, consistency, and care.
-          </motion.p>
-        </motion.div>
-
-        {/* Decorative line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-          className="my-12 h-px max-w-xs origin-left bg-gradient-to-r from-primary/40 to-transparent"
-        />
-
-        {/* Cards grid */}
-        <div className="grid gap-5 sm:grid-cols-2">
-          {aboutStory.map((item, index) => (
-            <motion.article
-              key={item.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -4, transition: { duration: 0.25 } }}
-              className="group relative rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-md transition-colors duration-300 hover:border-primary/30"
-            >
-              <div
-                className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                style={{
-                  boxShadow:
-                    "inset 0 1px 0 0 hsl(var(--primary) / 0.1), 0 0 40px -10px hsl(var(--primary) / 0.15)",
-                }}
-              />
-              <div className="relative">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/20">
-                    {item.icon}
-                  </div>
-                  <span className="text-xs font-medium uppercase tracking-[0.25em] text-muted-foreground">
-                    0{index + 1}
-                  </span>
-                </div>
-                <h3 className="text-lg font-medium text-foreground">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-
-        {/* Status indicator */}
-        <motion.div
+      <div className="max-w-6xl mx-auto relative">
+        <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-16 flex items-center gap-4"
+          className="text-5xl md:text-7xl font-black tracking-tighter uppercase italic mb-24 text-center md:text-left"
         >
-          <motion.div
-            className="h-2 w-2 rounded-full bg-primary"
-            animate={{ scale: [1, 1.5, 1], opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-          <p className="text-sm text-muted-foreground">
-            Currently open to new opportunities and collaborations.
-          </p>
-        </motion.div>
+          Professional <span className="text-indigo-500">Core</span>
+        </motion.h2>
+
+        {/* The Graph Path */}
+        <div className="absolute inset-0 top-60 left-0 w-full h-[500px] opacity-20 pointer-events-none hidden md:block">
+          <svg viewBox="0 0 1000 100" className="w-full h-full">
+            <motion.path
+              d={graphPath}
+              fill="none"
+              stroke="url(#lineGradient)"
+              strokeWidth="2"
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+            />
+            <defs>
+              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#6366f1" />
+                <stop offset="100%" stopColor="#a855f7" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Content Rows */}
+        <div className="space-y-32 relative z-10">
+          {aboutData.map((item, i) => (
+            <motion.div 
+              key={item.role}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-10 md:gap-20`}
+            >
+              {/* Role Title & Description */}
+              <div className="flex-1 space-y-4">
+                <div className="flex items-center gap-4">
+                   <span className="text-xs font-mono text-indigo-500">SECTION_0{i + 1}</span>
+                   <h3 className="text-3xl font-bold tracking-tight">
+                     {item.role}
+                   </h3>
+                </div>
+                <p className="text-neutral-400 text-lg leading-relaxed border-l border-white/10 pl-6">
+                  {item.content}
+                </p>
+              </div>
+
+              {/* Stat Node */}
+              <div className="relative">
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  className="w-44 h-44 rounded-full border border-white/5 bg-neutral-900/30 backdrop-blur-3xl flex flex-col items-center justify-center relative overflow-hidden group shadow-2xl"
+                >
+                  <div className="absolute inset-0 bg-indigo-500/5 group-hover:bg-indigo-500/10 transition-all duration-500" />
+                  <span className="text-[10px] font-mono text-neutral-500 uppercase mb-2 tracking-widest">Focus Area</span>
+                  <span className="text-sm font-bold text-white text-center px-6 leading-tight uppercase tracking-tighter">
+                    {item.stat}
+                  </span>
+                  
+                  <div className="absolute -bottom-1 w-2 h-2 bg-indigo-500 rounded-full shadow-[0_0_15px_#6366f1]" />
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
+
+      {/* Professional Summary */}
+     
     </section>
   );
-};
-
-export default About;
+}

@@ -1,138 +1,119 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import {
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt
-} from "react-icons/fa";
-import {
-  SiNextdotjs, SiTailwindcss, SiRedux, SiExpress, SiBootstrap,
-  SiCplusplus, SiPostman, SiVercel
-} from "react-icons/si";
 
-const skills = [
-  { icon: <FaHtml5 />, name: "HTML5", level: "Expert", percent: 95 },
-  { icon: <FaCss3Alt />, name: "CSS3", level: "Expert", percent: 95 },
-  { icon: <FaJs />, name: "JavaScript", level: "Expert", percent: 90 },
-  { icon: <FaReact />, name: "React.js", level: "Advanced", percent: 85 },
-  { icon: <SiNextdotjs />, name: "Next.js", level: "Advanced", percent: 85 },
-  { icon: <SiTailwindcss />, name: "Tailwind CSS", level: "Advanced", percent: 90 },
-  { icon: <SiRedux />, name: "Redux Toolkit", level: "Advanced", percent: 80 },
-  { icon: <SiBootstrap />, name: "Bootstrap", level: "Intermediate", percent: 70 },
-  { icon: <FaNodeJs />, name: "Node.js", level: "Intermediate", percent: 70 },
-  { icon: <SiExpress />, name: "Express.js", level: "Intermediate", percent: 65 },
-  { icon: <FaGitAlt />, name: "Git & GitHub", level: "Advanced", percent: 85 },
-  { icon: <SiPostman />, name: "Postman", level: "Intermediate", percent: 70 },
-  { icon: <SiVercel />, name: "Vercel", level: "Intermediate", percent: 75 },
-  { icon: <SiCplusplus />, name: "C++ DSA", level: "Intermediate", percent: 80 },
+import { motion } from "framer-motion";
+
+const categories = [
+  {
+    title: "Frontend Mastery",
+    skills: [
+      { name: "React/Next.js", level: 95, color: "from-blue-400 to-cyan-400" },
+      { name: "TypeScript", level: 85, color: "from-blue-600 to-indigo-500" },
+      { name: "Tailwind CSS", level: 90, color: "from-cyan-400 to-sky-400" },
+    ],
+  },
+  {
+    title: "Backend & Systems",
+    skills: [
+      { name: "Node.js", level: 80, color: "from-green-400 to-emerald-500" },
+      { name: "Rest APIs", level: 90, color: "from-orange-400 to-red-500" },
+      { name: "PostgreSQL", level: 75, color: "from-indigo-400 to-purple-500" },
+    ],
+  },
 ];
 
-// animation configs
-const gridVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const SkillItem = ({ icon, name, level, percent }) => (
-  <motion.div
-    variants={itemVariants}
-    whileHover={{ scale: 1.08, rotate: 1 }}
-    className="group relative p-6 rounded-2xl bg-gray-800/40 backdrop-blur-lg border border-gray-600/40 shadow-lg transition-all duration-500 cursor-pointer hover:border-purple-400 hover:shadow-purple-500/30"
-    title={level}
-  >
-    {/* Hover glow */}
-    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-40 transition duration-500 rounded-2xl"></div>
-
-    {/* Icon */}
-    <div className="text-5xl mb-4 text-indigo-300 group-hover:text-pink-300 transition duration-300">
-      {icon}
-    </div>
-
-    {/* Name */}
-    <div className="text-lg font-semibold text-white">{name}</div>
-
-    {/* Level Badge */}
-    <div
-      className={`mt-2 px-3 py-1 rounded-full text-xs font-medium inline-block transition 
-        ${
-          level === "Expert"
-            ? "bg-green-500/20 text-green-300 border border-green-500/30"
-            : level === "Advanced"
-            ? "bg-blue-500/20 text-blue-300 border border-blue-500/30"
-            : "bg-yellow-500/20 text-yellow-300 border border-yellow-500/30"
-        }`}
-    >
-      {level}
-    </div>
-
-    {/* Progress Bar */}
-    <div className="mt-4 w-full h-2 bg-gray-700 rounded-full overflow-hidden">
-      <motion.div
-        initial={{ width: 0 }}
-        whileInView={{ width: `${percent}%` }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="h-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"
-      />
-    </div>
-
-    {/* Percentage Label */}
-    <div className="text-xs text-gray-400 mt-1">{percent}%</div>
-  </motion.div>
-);
-
-const Skills = () => {
+export default function Skills() {
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white">
-      {/* Glow effect background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(129,140,248,0.12),transparent_70%)]" />
+    <section className="relative py-24 bg-black text-white px-6">
+      {/* Background Glows matching your Hero 3D shape */}
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-indigo-500/10 blur-[120px] -translate-y-1/2 pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto text-center relative z-10">
-        {/* Image */}
-        <motion.img
-          src="/skill.svg"
-          alt="skill image"
-          className="w-full mb-10 h-72 rounded-3xl shadow-lg hover:shadow-[0_0_35px_rgba(129,140,248,0.4)] transition-transform duration-500"
-          whileHover={{ scale: 1.05 }}
-        />
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+          <div>
+            <h2 className="text-5xl font-black tracking-tighter italic uppercase">
+              Technical <span className="text-indigo-500">Metrics</span>
+            </h2>
+            <p className="text-neutral-500 mt-2 font-mono">Proficiency & Architecture Breakdown</p>
+          </div>
+          <div className="text-right hidden md:block">
+            <span className="text-xs bg-white/5 border border-white/10 px-3 py-1 rounded-full text-neutral-400">
+              Updated 2024
+            </span>
+          </div>
+        </div>
 
-        {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: -40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold mb-14 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text"
-        >
-          ⚡ Tech Stack / Skills
-        </motion.h2>
+        <div className="grid md:grid-cols-2 gap-12">
+          {categories.map((cat, idx) => (
+            <motion.div 
+              key={cat.title}
+              initial={{ opacity: 0, x: idx === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="space-y-8"
+            >
+              <h3 className="text-xl font-bold tracking-widest text-neutral-400 uppercase border-b border-white/10 pb-4">
+                {cat.title}
+              </h3>
+              
+              <div className="space-y-10">
+                {cat.skills.map((skill) => (
+                  <div key={skill.name} className="relative">
+                    <div className="flex justify-between mb-2 items-end">
+                      <span className="text-lg font-bold tracking-tight">{skill.name}</span>
+                      <span className="text-sm font-mono text-indigo-400">{skill.level}%</span>
+                    </div>
+                    
+                    {/* The "Gauge" Bar */}
+                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        transition={{ duration: 1.5, ease: "easeOut" }}
+                        className={`h-full bg-gradient-to-r ${skill.color} relative`}
+                      >
+                        {/* Glow tip */}
+                        <div className="absolute right-0 top-0 bottom-0 w-2 bg-white blur-sm opacity-50" />
+                      </motion.div>
+                    </div>
 
-        {/* Grid */}
-        <motion.div
-          variants={gridVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8"
-        >
-          {skills.map((skill) => (
-            <SkillItem key={skill.name} {...skill} />
+                    {/* Ambient light under the bar */}
+                    <div 
+                      className={`absolute -bottom-4 left-0 w-full h-8 opacity-10 blur-2xl bg-gradient-to-r ${skill.color} pointer-events-none`} 
+                    />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Footer text */}
-        <p className="mt-12 text-lg sm:text-xl text-indigo-300 max-w-3xl mx-auto leading-relaxed">
-          <span className="font-semibold">
-            React.js · Next.js · Tailwind CSS · Redux Toolkit · Node.js · Express.js · GitHub · C++ DSA
-          </span>
-        </p>
+        {/* Circular "Full Stack" Indicator Section */}
+        <div className="mt-24 p-8 rounded-[3rem] bg-gradient-to-b from-white/5 to-transparent border border-white/10 flex flex-col md:flex-row items-center gap-12">
+            <div className="relative w-48 h-48 flex items-center justify-center">
+                <svg className="w-full h-full transform -rotate-90">
+                    <circle cx="96" cy="96" r="80" stroke="currentColor" strokeWidth="12" fill="transparent" className="text-white/5" />
+                    <motion.circle 
+                        cx="96" cy="96" r="80" stroke="currentColor" strokeWidth="12" fill="transparent" 
+                        strokeDasharray="502" 
+                        initial={{ strokeDashoffset: 502 }}
+                        whileInView={{ strokeDashoffset: 100 }}
+                        transition={{ duration: 2 }}
+                        className="text-indigo-500"
+                    />
+                </svg>
+                <div className="absolute text-center">
+                    <span className="text-4xl font-black">90%</span>
+                    <p className="text-[10px] uppercase font-bold text-neutral-500">Efficiency</p>
+                </div>
+            </div>
+            <div className="flex-1">
+                <h4 className="text-2xl font-bold mb-2">Web App Architecture</h4>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                    Specialized in building end-to-end scalable applications. My workflow covers everything from 
+                    <span className="text-white"> UI Design </span> to <span className="text-white"> Database Optimization</span>.
+                </p>
+            </div>
+        </div>
       </div>
     </section>
   );
-};
-
-export default Skills;
+}
