@@ -1,4 +1,5 @@
 "use client";
+
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,7 +31,13 @@ const Contact = () => {
   const onSubmit = async (data) => {
     setStatus("Sending...");
     try {
-      const res = await fetch("/api/contact", {
+      const payload = {
+        ...data,
+        mobile: data.phone,
+      };
+
+      
+  const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -51,9 +58,10 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-16 px-6 bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white overflow-hidden">
-      {/* Glow Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.15),transparent_70%)]" />
+    <section className="relative overflow-hidden bg-black px-6 py-16 text-white md:py-20">
+      <div className="pointer-events-none absolute left-1/2 top-14 h-48 w-[72%] -translate-x-1/2 rounded-full bg-indigo-500/15 blur-[110px]" />
+      <div className="pointer-events-none absolute -left-16 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-indigo-500/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-16 bottom-12 h-72 w-72 rounded-full bg-cyan-500/10 blur-[120px]" />
 
       <Toaster position="top-center" />
 
@@ -63,69 +71,70 @@ const Contact = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
         onSubmit={handleSubmit(onSubmit)}
-        className="relative w-full max-w-3xl bg-gray-900/60 backdrop-blur-xl border border-purple-500/20 hover:border-purple-400/40 transition rounded-3xl shadow-lg p-10 space-y-8 z-10"
+        className="relative z-10 mx-auto w-full max-w-5xl space-y-8 rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-6 shadow-[0_25px_100px_-45px_rgba(99,102,241,0.55)] backdrop-blur-xl md:p-9"
       >
-        <h2 className="text-4xl font-extrabold text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
-          Contact Me
-        </h2>
+        <div className="flex flex-col gap-3 border-b border-white/10 pb-5 md:pb-6">
+          <h2 className="text-4xl font-black uppercase italic tracking-tighter md:text-5xl">
+            Contact <span className="text-indigo-500">Protocol</span>
+          </h2>
+          <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+            Quick brief for project inquiry and collaboration
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Name */}
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
           <div>
-            <label className="block mb-1 font-semibold text-purple-300">
+            <label className="mb-2 block text-[11px] font-mono uppercase tracking-[0.18em] text-neutral-400">
               <FaUser className="inline mr-1" /> Name
             </label>
             <input
               type="text"
               placeholder="Your name"
               {...register("name")}
-              className="w-full p-3 rounded-lg bg-gray-800/50 text-white border border-gray-600/30 focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
+              className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-600 transition focus:border-indigo-400 focus:outline-none"
             />
             {errors.name && (
-              <p className="text-pink-400 text-sm mt-1">{errors.name.message}</p>
+              <p className="mt-1 text-sm text-rose-300">{errors.name.message}</p>
             )}
           </div>
 
-          {/* Email */}
           <div>
-            <label className="block mb-1 font-semibold text-purple-300">
+            <label className="mb-2 block text-[11px] font-mono uppercase tracking-[0.18em] text-neutral-400">
               <FaEnvelope className="inline mr-1" /> Email
             </label>
             <input
               type="email"
               placeholder="you@example.com"
               {...register("email")}
-              className="w-full p-3 rounded-lg bg-gray-800/50 text-white border border-gray-600/30 focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
+              className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-600 transition focus:border-indigo-400 focus:outline-none"
             />
             {errors.email && (
-              <p className="text-pink-400 text-sm mt-1">{errors.email.message}</p>
+              <p className="mt-1 text-sm text-rose-300">{errors.email.message}</p>
             )}
           </div>
 
-          {/* Phone */}
           <div>
-            <label className="block mb-1 font-semibold text-purple-300">
+            <label className="mb-2 block text-[11px] font-mono uppercase tracking-[0.18em] text-neutral-400">
               <FaPhone className="inline mr-1" /> Phone
             </label>
             <input
               type="tel"
               placeholder="Your phone"
               {...register("phone")}
-              className="w-full p-3 rounded-lg bg-gray-800/50 text-white border border-gray-600/30 focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
+              className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-600 transition focus:border-indigo-400 focus:outline-none"
             />
             {errors.phone && (
-              <p className="text-pink-400 text-sm mt-1">{errors.phone.message}</p>
+              <p className="mt-1 text-sm text-rose-300">{errors.phone.message}</p>
             )}
           </div>
 
-          {/* Reason */}
           <div>
-            <label className="block mb-1 font-semibold text-purple-300">
+            <label className="mb-2 block text-[11px] font-mono uppercase tracking-[0.18em] text-neutral-400">
               <MdOutlineSubject className="inline mr-1" /> Reason
             </label>
             <select
               {...register("reason")}
-              className="w-full p-3 rounded-lg bg-gray-800/50 text-white border border-gray-600/30 focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
+              className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white transition focus:border-indigo-400 focus:outline-none"
             >
               <option value="">Select reason</option>
               <option value="Project Inquiry">Project Inquiry</option>
@@ -134,39 +143,41 @@ const Contact = () => {
               <option value="Other">Other</option>
             </select>
             {errors.reason && (
-              <p className="text-pink-400 text-sm mt-1">{errors.reason.message}</p>
+              <p className="mt-1 text-sm text-rose-300">{errors.reason.message}</p>
             )}
           </div>
 
-          {/* Message */}
           <div className="md:col-span-2">
-            <label className="block mb-1 font-semibold text-purple-300">
+            <label className="mb-2 block text-[11px] font-mono uppercase tracking-[0.18em] text-neutral-400">
               <FaRegCommentDots className="inline mr-1" /> Message
             </label>
             <textarea
-              rows="4"
+              rows={4}
               placeholder="Your message"
               {...register("message")}
-              className="w-full p-3 rounded-lg bg-gray-800/50 text-white border border-gray-600/30 focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
+              className="w-full resize-none rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-600 transition focus:border-indigo-400 focus:outline-none"
             ></textarea>
             {errors.message && (
-              <p className="text-pink-400 text-sm mt-1">{errors.message.message}</p>
+              <p className="mt-1 text-sm text-rose-300">{errors.message.message}</p>
             )}
           </div>
         </div>
 
-        {/* Button */}
-        <div className="text-center pt-4">
+        <div className="flex items-center justify-between gap-4 border-t border-white/10 pt-5">
+          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+            Secure form transmission
+          </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
             disabled={isSubmitting}
-            className={`px-10 py-3 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold shadow-lg relative overflow-hidden transition-all
-              ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
+            className={`relative overflow-hidden rounded-xl bg-gradient-to-r from-indigo-500 to-blue-500 px-8 py-3 font-semibold text-white transition-all ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
             <span className="relative z-10">{status || "Send Message"}</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-pink-400/20 opacity-0 hover:opacity-100 transition" />
+            <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-indigo-300/20 opacity-0 transition hover:opacity-100" />
           </motion.button>
         </div>
       </motion.form>
