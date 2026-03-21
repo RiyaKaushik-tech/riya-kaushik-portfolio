@@ -40,7 +40,7 @@ const Contact = () => {
   const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
 
       if (res.ok) {
@@ -71,7 +71,7 @@ const Contact = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
         onSubmit={handleSubmit(onSubmit)}
-        className="relative z-10 mx-auto w-full max-w-5xl space-y-8 rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-6 shadow-[0_25px_100px_-45px_rgba(99,102,241,0.55)] backdrop-blur-xl md:p-9"
+        className="relative z-10 mx-auto w-full max-w-5xl space-y-8 rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.1] to-white/[0.03] p-6 shadow-[0_25px_100px_-45px_rgba(99,102,241,0.55)] backdrop-blur-xl md:p-9"
       >
         <div className="flex flex-col gap-3 border-b border-white/10 pb-5 md:pb-6">
           <h2 className="text-4xl font-black uppercase italic tracking-tighter md:text-5xl">
@@ -80,6 +80,21 @@ const Contact = () => {
           <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
             Quick brief for project inquiry and collaboration
           </p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-3">
+          <div className="rounded-xl border border-white/10 bg-black/30 p-3">
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Step 01</p>
+            <p className="mt-1 text-sm text-neutral-100">Share your goal</p>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-black/30 p-3">
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Step 02</p>
+            <p className="mt-1 text-sm text-neutral-100">Receive confirmation</p>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-black/30 p-3">
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Step 03</p>
+            <p className="mt-1 text-sm text-neutral-100">Plan next action</p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
@@ -91,7 +106,7 @@ const Contact = () => {
               type="text"
               placeholder="Your name"
               {...register("name")}
-              className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-600 transition focus:border-indigo-400 focus:outline-none"
+              className="w-full rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-500 transition focus:border-indigo-400 focus:outline-none"
             />
             {errors.name && (
               <p className="mt-1 text-sm text-rose-300">{errors.name.message}</p>
@@ -106,7 +121,7 @@ const Contact = () => {
               type="email"
               placeholder="you@example.com"
               {...register("email")}
-              className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-600 transition focus:border-indigo-400 focus:outline-none"
+              className="w-full rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-500 transition focus:border-indigo-400 focus:outline-none"
             />
             {errors.email && (
               <p className="mt-1 text-sm text-rose-300">{errors.email.message}</p>
@@ -121,7 +136,7 @@ const Contact = () => {
               type="tel"
               placeholder="Your phone"
               {...register("phone")}
-              className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-600 transition focus:border-indigo-400 focus:outline-none"
+              className="w-full rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-500 transition focus:border-indigo-400 focus:outline-none"
             />
             {errors.phone && (
               <p className="mt-1 text-sm text-rose-300">{errors.phone.message}</p>
@@ -134,7 +149,7 @@ const Contact = () => {
             </label>
             <select
               {...register("reason")}
-              className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white transition focus:border-indigo-400 focus:outline-none"
+              className="w-full rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white transition focus:border-indigo-400 focus:outline-none"
             >
               <option value="">Select reason</option>
               <option value="Project Inquiry">Project Inquiry</option>
@@ -155,7 +170,7 @@ const Contact = () => {
               rows={4}
               placeholder="Your message"
               {...register("message")}
-              className="w-full resize-none rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-600 transition focus:border-indigo-400 focus:outline-none"
+              className="w-full resize-none rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-500 transition focus:border-indigo-400 focus:outline-none"
             ></textarea>
             {errors.message && (
               <p className="mt-1 text-sm text-rose-300">{errors.message.message}</p>

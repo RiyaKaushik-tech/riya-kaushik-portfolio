@@ -86,11 +86,26 @@ export default function ProjectShowcase() {
           </div>
         </div>
 
+        <div className="mb-12 grid gap-4 sm:grid-cols-3">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Workflow</p>
+            <p className="mt-1 text-sm font-semibold text-neutral-100">Research to Deployment</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Focus</p>
+            <p className="mt-1 text-sm font-semibold text-neutral-100">Scalable Product Features</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Delivery</p>
+            <p className="mt-1 text-sm font-semibold text-neutral-100">Production-ready Builds</p>
+          </div>
+        </div>
+
         {/* Main Display Area */}
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           
           {/* LEFT: Project Metadata */}
-          <div className="lg:col-span-5 space-y-8">
+          <div className="lg:col-span-5 space-y-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -107,7 +122,7 @@ export default function ProjectShowcase() {
                   </h3>
                 </div>
 
-                <p className="text-neutral-400 text-lg leading-relaxed font-light border-l-2 border-indigo-500/30 pl-6">
+                <p className="text-neutral-300 text-lg leading-relaxed font-light border-l-2 border-indigo-500/30 pl-6">
                   {projects[active].description}
                 </p>
 
@@ -139,7 +154,7 @@ export default function ProjectShowcase() {
 
           {/* RIGHT: Visual Frame (Super Curved) */}
           <div className="lg:col-span-7">
-            <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-neutral-900 shadow-2xl">
+            <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/15 bg-neutral-900 shadow-2xl">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={active}

@@ -33,19 +33,35 @@ export default function AboutPage() {
   const graphPath = `M0 ${aboutData[0].point} L 250 ${aboutData[0].point} L 500 ${aboutData[1].point} L 750 ${aboutData[2].point} L 1000 ${aboutData[3].point}`;
 
   return (
-    <section className="relative min-h-screen bg-black text-white py-32 overflow-hidden px-6">
+    <section className="relative min-h-screen overflow-hidden bg-black px-6 py-28 text-white md:py-32">
       
       {/* Background Lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-indigo-500/10 blur-[150px] -z-10 rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -z-10 h-[420px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/15 blur-[150px]" />
+      <div className="absolute -left-24 top-16 -z-10 h-72 w-72 rounded-full bg-cyan-500/10 blur-[130px]" />
 
       <div className="max-w-6xl mx-auto relative">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-black tracking-tighter uppercase italic mb-24 text-center md:text-left"
+          className="mb-8 text-center text-5xl font-black uppercase italic tracking-tighter md:mb-10 md:text-left md:text-7xl"
         >
           Professional <span className="text-indigo-500">Core</span>
         </motion.h2>
+
+        <div className="mb-20 grid gap-4 sm:grid-cols-3">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Focus</p>
+            <p className="mt-1 text-sm font-semibold text-neutral-100">Scalable Product Systems</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Approach</p>
+            <p className="mt-1 text-sm font-semibold text-neutral-100">Performance with Clarity</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Workflow</p>
+            <p className="mt-1 text-sm font-semibold text-neutral-100">Build, Measure, Refine</p>
+          </div>
+        </div>
 
         {/* The Graph Path */}
         <div className="absolute inset-0 top-60 left-0 w-full h-[500px] opacity-20 pointer-events-none hidden md:block">
@@ -78,14 +94,14 @@ export default function AboutPage() {
               className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-10 md:gap-20`}
             >
               {/* Role Title & Description */}
-              <div className="flex-1 space-y-4">
+              <div className="flex-1 space-y-4 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
                 <div className="flex items-center gap-4">
                    <span className="text-xs font-mono text-indigo-500">SECTION_0{i + 1}</span>
                    <h3 className="text-3xl font-bold tracking-tight">
                      {item.role}
                    </h3>
                 </div>
-                <p className="text-neutral-400 text-lg leading-relaxed border-l border-white/10 pl-6">
+                <p className="border-l border-white/20 pl-6 text-lg leading-relaxed text-neutral-300">
                   {item.content}
                 </p>
               </div>
@@ -94,7 +110,7 @@ export default function AboutPage() {
               <div className="relative">
                 <motion.div 
                   whileHover={{ scale: 1.05 }}
-                  className="w-44 h-44 rounded-full border border-white/5 bg-neutral-900/30 backdrop-blur-3xl flex flex-col items-center justify-center relative overflow-hidden group shadow-2xl"
+                  className="relative flex h-44 w-44 flex-col items-center justify-center overflow-hidden rounded-full border border-white/10 bg-neutral-900/40 shadow-2xl backdrop-blur-3xl"
                 >
                   <div className="absolute inset-0 bg-indigo-500/5 group-hover:bg-indigo-500/10 transition-all duration-500" />
                   <span className="text-[10px] font-mono text-neutral-500 uppercase mb-2 tracking-widest">Focus Area</span>

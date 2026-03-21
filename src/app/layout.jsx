@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <body>
       {/* <body className='bg-gradient-to-br from-gray-50 via-purple-100 to-indigo-200 dark:from-gray-900 dark:via-purple-700 dark:to-indigo-800'> */}
         {loading && <Loader />}
-        {/* <Navbar /> */}
+        <Navbar />
     {children}
         <Footer/>
       </body>

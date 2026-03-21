@@ -48,9 +48,30 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+    background-color: #050505;
+    color: #f5f7ff;
   }
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: #f8fafc;
+}
+
+/* Flow helpers for section-based one-page navigation */
+#home,
+#about,
+#skills,
+#projects,
+#contact,
+#experience,
+#credentials {
+  scroll-margin-top: 88px;
 }
 
 /* Print-friendly styles for resume */

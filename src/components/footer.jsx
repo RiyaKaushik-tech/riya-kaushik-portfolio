@@ -9,10 +9,10 @@ export const Footer = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed bottom-0 w-full 
+      className="w-full 
         bg-gradient-to-r from-black/90 via-blue-900/80 to-gray-900/90 
         backdrop-blur-md border-t border-blue-500/30 
-        text-white py-3 shadow-lg z-50"
+        text-white py-3 shadow-lg"
     >
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-6 text-sm">
         
