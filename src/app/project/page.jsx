@@ -46,22 +46,22 @@ export default function ProjectShowcase() {
   const prev = () => setActive((prev) => (prev - 1 + projects.length) % projects.length);
 
   return (
-    <section className="relative min-h-screen bg-black text-white py-24 px-6 flex flex-col justify-center overflow-hidden">
+    <section className="relative min-h-screen bg-[#05080f] text-white py-14 px-6 flex flex-col justify-center overflow-hidden md:py-16">
       
       {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 blur-[120px] rounded-full" />
+      <div className="absolute top-0 left-0 w-full h-full opacity-12 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] h-[440px] bg-blue-500/8 blur-[90px] rounded-full" />
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         
         {/* Section Header */}
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/5 pb-10">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-4">
           <div>
-            <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase italic leading-none">
-              Featured <span className="text-indigo-500">Builds</span>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight uppercase italic leading-none">
+              Featured <span className="text-cyan-400">Builds</span>
             </h2>
-            <p className="mt-4 text-neutral-500 font-mono text-[10px] uppercase tracking-[0.4em]">
+            <p className="mt-2 text-neutral-500 font-mono text-[10px] uppercase tracking-[0.25em]">
               Technical Case Studies // System Architecture
             </p>
           </div>
@@ -70,81 +70,81 @@ export default function ProjectShowcase() {
           <div className="flex items-center gap-4">
             <button 
               onClick={prev} 
-              className="p-4 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group"
+              className="p-2.5 rounded-sm border border-white/10 hover:bg-white hover:text-black transition-all duration-300"
             >
-              <FaChevronLeft size={14} />
+              <FaChevronLeft size={12} />
             </button>
-            <div className="font-mono text-sm text-indigo-500 tracking-widest">
+            <div className="font-mono text-xs text-cyan-300 tracking-widest">
               0{active + 1} / 0{projects.length}
             </div>
             <button 
               onClick={next} 
-              className="p-4 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group"
+              className="p-2.5 rounded-sm border border-white/10 hover:bg-white hover:text-black transition-all duration-300"
             >
-              <FaChevronRight size={14} />
+              <FaChevronRight size={12} />
             </button>
           </div>
         </div>
 
-        <div className="mb-12 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+        <div className="mb-8 grid gap-3 sm:grid-cols-3">
+          <div className="rounded-md bg-white/[0.03] p-3">
             <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Workflow</p>
             <p className="mt-1 text-sm font-semibold text-neutral-100">Research to Deployment</p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+          <div className="rounded-md bg-white/[0.03] p-3">
             <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Focus</p>
             <p className="mt-1 text-sm font-semibold text-neutral-100">Scalable Product Features</p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+          <div className="rounded-md bg-white/[0.03] p-3">
             <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Delivery</p>
             <p className="mt-1 text-sm font-semibold text-neutral-100">Production-ready Builds</p>
           </div>
         </div>
 
         {/* Main Display Area */}
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-6 items-center">
           
           {/* LEFT: Project Metadata */}
-          <div className="lg:col-span-5 space-y-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
+          <div className="lg:col-span-5 space-y-5 rounded-md bg-white/[0.04] p-4 md:p-5">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.5 }}
-                className="space-y-6"
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="space-y-4"
               >
                 <div className="space-y-2">
-                  <span className="text-indigo-400 font-mono text-xs uppercase tracking-widest">Deployment Ready</span>
-                  <h3 className="text-4xl md:text-6xl font-bold tracking-tight uppercase italic leading-tight">
+                  <span className="text-cyan-300 font-mono text-xs uppercase tracking-wider">Deployment Ready</span>
+                  <h3 className="text-3xl md:text-5xl font-bold tracking-tight uppercase italic leading-tight">
                     {projects[active].title}
                   </h3>
                 </div>
 
-                <p className="text-neutral-300 text-lg leading-relaxed font-light border-l-2 border-indigo-500/30 pl-6">
+                <p className="text-neutral-300 text-base leading-snug font-light border-l-2 border-cyan-400/30 pl-4">
                   {projects[active].description}
                 </p>
 
                 {/* Curved Skill Tags */}
                 <div className="flex flex-wrap gap-2">
                   {projects[active].skills.map((skill, i) => (
-                    <span 
+                    <span
                       key={i} 
-                      className="text-[10px] px-4 py-1.5 rounded-full bg-white/5 text-neutral-300 border border-white/10 font-mono"
+                      className="text-[10px] px-2.5 py-1 rounded-sm bg-white/[0.06] text-neutral-300 font-mono"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
 
-                <div className="pt-6 flex gap-6">
-                  <a href={projects[active].github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-indigo-400 transition-colors group">
-                    <FaGithub size={18} /> <span>Source_Code</span>
+                <div className="pt-2 flex gap-4">
+                  <a href={projects[active].github} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider hover:text-cyan-300 transition-colors">
+                    <FaGithub size={14} /> <span>Source</span>
                   </a>
                   {projects[active].live && (
-                    <a href={projects[active].live} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-indigo-400 transition-colors group">
-                      <FaExternalLinkAlt size={16} /> <span>Live_Preview</span>
+                    <a href={projects[active].live} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider hover:text-cyan-300 transition-colors">
+                      <FaExternalLinkAlt size={12} /> <span>Live</span>
                     </a>
                   )}
                 </div>
@@ -154,7 +154,7 @@ export default function ProjectShowcase() {
 
           {/* RIGHT: Visual Frame (Super Curved) */}
           <div className="lg:col-span-7">
-            <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/15 bg-neutral-900 shadow-2xl">
+            <div className="relative aspect-video rounded-md overflow-hidden border border-white/10 bg-neutral-900">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={active}
@@ -162,7 +162,7 @@ export default function ProjectShowcase() {
                   initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
                   animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                   exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-                  transition={{ duration: 0.6, ease: "circOut" }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
                   className="w-full h-full object-cover"
                 />
               </AnimatePresence>
@@ -173,15 +173,15 @@ export default function ProjectShowcase() {
         </div>
 
         {/* BOTTOM: Fully Curved Navigation Tabs */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-2.5">
           {projects.map((p, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`text-left p-2 rounded-2xl border transition-all duration-500 flex flex-col justify-center ${
+              className={`text-left p-2 rounded-sm border transition-all duration-300 flex flex-col justify-center ${
                 active === i 
-                ? 'bg-indigo-500/10 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.2)]' 
-                : 'border-white/5 opacity-40 hover:opacity-100 hover:bg-white/5'
+                ? 'bg-cyan-500/12 border-cyan-400/60' 
+                : 'border-white/10 opacity-70 hover:opacity-100 hover:bg-white/[0.04]'
               }`}
             >
               <span className="text-[12px] font-bold camelCase tracking-tighter truncate block"> 0{i + 1}: {p.title}</span>

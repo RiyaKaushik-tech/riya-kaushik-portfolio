@@ -61,23 +61,23 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full top-0 z-50 px-6 md:px-8 py-5 backdrop-blur-xl bg-black/80 border-b border-white/10 shadow-2xl">
+    <nav className="fixed w-full top-0 z-50 px-5 md:px-7 py-3 backdrop-blur-md bg-[#04070d]/90 border-b border-white/10">
       <div
-        className="absolute left-0 top-0 h-[2px] bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 transition-all duration-300"
+        className="absolute left-0 top-0 h-[1px] bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300"
         style={{ width: `${scrollProgress}%` }}
       />
 
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         {/* Logo */}
         <Link href="#home" className="group">
-          <span className="text-2xl md:text-3xl font-black bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent tracking-tight drop-shadow-lg group-hover:scale-105 transition-all duration-300">
+          <span className="text-xl md:text-2xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent tracking-tight transition-all duration-300">
             Riya Kaushik
           </span>
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-12">
-          <div className="flex gap-8 text-lg font-semibold">
+        <div className="hidden lg:flex items-center gap-7">
+          <div className="flex gap-5 text-sm font-semibold">
             {[
               { href: "#home", label: "Home" },
               { href: "#about", label: "About" },
@@ -90,12 +90,12 @@ export const Navbar = () => {
               <Link
                 key={href}
                 href={href}
-                className={`relative group text-white/90 hover:text-cyan-300 transition-all duration-300 font-medium ${
+                className={`relative group py-0.5 text-white/90 hover:text-cyan-300 transition-all duration-300 font-medium ${
                   activeSection === href.slice(1) ? "text-cyan-300" : ""
                 }`}
               >
                 {label}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 transition-all duration-300 ${
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 ${
                   activeSection === href.slice(1) ? "w-full" : "w-0 group-hover:w-full"
                 }`} />
               </Link>
@@ -103,15 +103,15 @@ export const Navbar = () => {
           </div>
           <button
             onClick={handleDownload}
-            className="px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold rounded-xl border border-white/20 hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-md"
+            className="px-3.5 py-1.5 bg-cyan-500 text-black text-xs font-semibold uppercase tracking-wide rounded-sm hover:bg-cyan-400 transition-all duration-300"
           >
-            View Resume
+            Resume
           </button>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden text-2xl text-white"
+          className="lg:hidden text-xl text-white"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <FiX /> : <FiMenu />}
@@ -120,8 +120,8 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-t border-white/10 py-8">
-          <div className="flex flex-col items-center gap-6 max-w-2xl mx-auto">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-[#04070d] border-t border-white/10 py-4">
+          <div className="flex flex-col items-center gap-3 max-w-2xl mx-auto">
             {[
               { href: "#home", label: "Home" },
               { href: "#about", label: "About" },
@@ -135,7 +135,7 @@ export const Navbar = () => {
                 key={href}
                 href={href}
                 onClick={() => setIsOpen(false)}
-                className={`text-lg font-semibold text-white hover:text-cyan-300 transition-all duration-300 py-2 ${
+                className={`text-xs font-semibold uppercase tracking-wide text-white hover:text-cyan-300 transition-all duration-300 py-1 ${
                   activeSection === href.slice(1) ? "text-cyan-300" : ""
                 }`}
               >
@@ -144,9 +144,9 @@ export const Navbar = () => {
             ))}
             <button
               onClick={handleDownload}
-              className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300"
+              className="px-3.5 py-1.5 bg-cyan-500 text-black text-xs font-semibold uppercase tracking-wide rounded-sm hover:bg-cyan-400 transition-all duration-300"
             >
-              View Resume
+              Resume
             </button>
           </div>
         </div>

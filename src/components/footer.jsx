@@ -8,30 +8,27 @@ export const Footer = () => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="w-full 
-        bg-gradient-to-r from-black/90 via-blue-900/80 to-gray-900/90 
-        backdrop-blur-md border-t border-blue-500/30 
-        text-white py-3 shadow-lg"
+      transition={{ duration: 0.38, ease: "easeOut" }}
+      className="w-full border-t border-white/10 bg-[#04070d] text-white py-3"
     >
-      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-6 text-sm">
+      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-6 text-sm gap-2">
         
         {/* Left text */}
-        <div className="mb-2 sm:mb-0 text-gray-300">
+        <div className="mb-1 sm:mb-0 text-neutral-400">
           &copy; {new Date().getFullYear()}{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 font-semibold">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300 font-semibold">
             Riya Kaushik
           </span>
           . All rights reserved.
         </div>
 
         {/* Right social links */}
-        <div className="flex space-x-6 text-xl">
+        <div className="flex space-x-4 text-base">
           <a
             href="https://github.com/riya1807pro"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-pink-400 hover:drop-shadow-[0_0_6px_rgba(236,72,153,0.8)] transition duration-300"
+            className="text-neutral-300 hover:text-cyan-300 transition duration-300"
           >
             <FaGithub />
           </a>
@@ -39,7 +36,7 @@ export const Footer = () => {
             href="https://www.linkedin.com/in/riyakaushik-webdev"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-blue-400 hover:drop-shadow-[0_0_6px_rgba(59,130,246,0.8)] transition duration-300"
+            className="text-neutral-300 hover:text-blue-300 transition duration-300"
           >
             <FaLinkedin />
           </a>

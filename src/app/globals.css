@@ -53,13 +53,13 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-color: #050505;
+    background-color: #04070d;
     color: #f5f7ff;
   }
 }
 
 ::selection {
-  background: rgba(99, 102, 241, 0.35);
+  background: rgba(34, 211, 238, 0.28);
   color: #f8fafc;
 }
 
