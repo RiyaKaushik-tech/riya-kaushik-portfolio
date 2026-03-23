@@ -46,22 +46,22 @@ export default function ProjectShowcase() {
   const prev = () => setActive((prev) => (prev - 1 + projects.length) % projects.length);
 
   return (
-    <section className="relative min-h-screen bg-[#05080f] text-white py-14 px-6 flex flex-col justify-center overflow-hidden md:py-16">
+    <section className="relative min-h-screen py-14 px-6 flex flex-col justify-center overflow-hidden md:py-16" style={{ backgroundColor: 'var(--bg-page)', color: 'var(--text-primary)' }}>
       
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full opacity-12 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] h-[440px] bg-blue-500/8 blur-[90px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] h-[440px] blur-[90px] rounded-full" style={{ background: 'var(--color-bg-blur)' }} />
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         
         {/* Section Header */}
-        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-4">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b pb-4" style={{ borderColor: 'var(--border-color)' }}>
           <div>
             <h2 className="text-4xl md:text-6xl font-black tracking-tight uppercase italic leading-none">
-              Featured <span className="text-cyan-400">Builds</span>
+              Featured <span style={{ color: 'var(--color-primary-olive)' }}>Builds</span>
             </h2>
-            <p className="mt-2 text-neutral-500 font-mono text-[10px] uppercase tracking-[0.25em]">
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: 'var(--text-muted)' }}>
               Technical Case Studies // System Architecture
             </p>
           </div>
@@ -70,16 +70,22 @@ export default function ProjectShowcase() {
           <div className="flex items-center gap-4">
             <button 
               onClick={prev} 
-              className="p-2.5 rounded-sm border border-white/10 hover:bg-white hover:text-black transition-all duration-300"
+              className="p-2.5 rounded-sm border transition-all duration-300"
+              style={{ borderColor: 'var(--border-color)', color: 'var(--text-primary)', backgroundColor: 'transparent' }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--bg-subtle-strong)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
             >
               <FaChevronLeft size={12} />
             </button>
-            <div className="font-mono text-xs text-cyan-300 tracking-widest">
+            <div className="font-mono text-xs tracking-widest" style={{ color: 'var(--color-primary-olive)' }}>
               0{active + 1} / 0{projects.length}
             </div>
             <button 
               onClick={next} 
-              className="p-2.5 rounded-sm border border-white/10 hover:bg-white hover:text-black transition-all duration-300"
+              className="p-2.5 rounded-sm border transition-all duration-300"
+              style={{ borderColor: 'var(--border-color)', color: 'var(--text-primary)', backgroundColor: 'transparent' }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--bg-subtle-strong)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
             >
               <FaChevronRight size={12} />
             </button>
@@ -87,17 +93,17 @@ export default function ProjectShowcase() {
         </div>
 
         <div className="mb-8 grid gap-3 sm:grid-cols-3">
-          <div className="rounded-md bg-white/[0.03] p-3">
-            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Workflow</p>
-            <p className="mt-1 text-sm font-semibold text-neutral-100">Research to Deployment</p>
+          <div className="rounded-md p-3" style={{ backgroundColor: 'var(--bg-subtle)' }}>
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em]" style={{ color: 'var(--text-muted)' }}>Workflow</p>
+            <p className="mt-1 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Research to Deployment</p>
           </div>
-          <div className="rounded-md bg-white/[0.03] p-3">
-            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Focus</p>
-            <p className="mt-1 text-sm font-semibold text-neutral-100">Scalable Product Features</p>
+          <div className="rounded-md p-3" style={{ backgroundColor: 'var(--bg-subtle)' }}>
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em]" style={{ color: 'var(--text-muted)' }}>Focus</p>
+            <p className="mt-1 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Scalable Product Features</p>
           </div>
-          <div className="rounded-md bg-white/[0.03] p-3">
-            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Delivery</p>
-            <p className="mt-1 text-sm font-semibold text-neutral-100">Production-ready Builds</p>
+          <div className="rounded-md p-3" style={{ backgroundColor: 'var(--bg-subtle)' }}>
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em]" style={{ color: 'var(--text-muted)' }}>Delivery</p>
+            <p className="mt-1 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Production-ready Builds</p>
           </div>
         </div>
 
@@ -105,7 +111,7 @@ export default function ProjectShowcase() {
         <div className="grid lg:grid-cols-12 gap-6 items-center">
           
           {/* LEFT: Project Metadata */}
-          <div className="lg:col-span-5 space-y-5 rounded-md bg-white/[0.04] p-4 md:p-5">
+          <div className="lg:col-span-5 space-y-5 rounded-md p-4 md:p-5" style={{ backgroundColor: 'var(--bg-subtle)' }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -116,13 +122,13 @@ export default function ProjectShowcase() {
                 className="space-y-4"
               >
                 <div className="space-y-2">
-                  <span className="text-cyan-300 font-mono text-xs uppercase tracking-wider">Deployment Ready</span>
+                  <span className="font-mono text-xs uppercase tracking-wider" style={{ color: 'var(--color-primary-olive)' }}>Deployment Ready</span>
                   <h3 className="text-3xl md:text-5xl font-bold tracking-tight uppercase italic leading-tight">
                     {projects[active].title}
                   </h3>
                 </div>
 
-                <p className="text-neutral-300 text-base leading-snug font-light border-l-2 border-cyan-400/30 pl-4">
+                <p className="text-base leading-snug font-light border-l-2 pl-4" style={{ borderColor: 'var(--color-primary-olive)', color: 'var(--text-secondary)' }}>
                   {projects[active].description}
                 </p>
 
@@ -131,7 +137,8 @@ export default function ProjectShowcase() {
                   {projects[active].skills.map((skill, i) => (
                     <span
                       key={i} 
-                      className="text-[10px] px-2.5 py-1 rounded-sm bg-white/[0.06] text-neutral-300 font-mono"
+                      className="text-[10px] px-2.5 py-1 rounded-sm font-mono"
+                      style={{ backgroundColor: 'var(--bg-subtle-strong)', color: 'var(--text-secondary)' }}
                     >
                       {skill}
                     </span>
@@ -139,11 +146,11 @@ export default function ProjectShowcase() {
                 </div>
 
                 <div className="pt-2 flex gap-4">
-                  <a href={projects[active].github} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider hover:text-cyan-300 transition-colors">
+                  <a href={projects[active].github} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider transition-colors" style={{ color: 'var(--text-secondary)' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-primary-olive)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; }}>
                     <FaGithub size={14} /> <span>Source</span>
                   </a>
                   {projects[active].live && (
-                    <a href={projects[active].live} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider hover:text-cyan-300 transition-colors">
+                    <a href={projects[active].live} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider transition-colors" style={{ color: 'var(--text-secondary)' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-primary-olive)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; }}>
                       <FaExternalLinkAlt size={12} /> <span>Live</span>
                     </a>
                   )}
@@ -154,7 +161,7 @@ export default function ProjectShowcase() {
 
           {/* RIGHT: Visual Frame (Super Curved) */}
           <div className="lg:col-span-7">
-            <div className="relative aspect-video rounded-md overflow-hidden border border-white/10 bg-neutral-900">
+            <div className="relative aspect-video rounded-md overflow-hidden border" style={{ borderColor: 'var(--border-color)', backgroundColor: 'var(--bg-card)' }}>
               <AnimatePresence mode="wait">
                 <motion.img
                   key={active}
@@ -180,9 +187,10 @@ export default function ProjectShowcase() {
               onClick={() => setActive(i)}
               className={`text-left p-2 rounded-sm border transition-all duration-300 flex flex-col justify-center ${
                 active === i 
-                ? 'bg-cyan-500/12 border-cyan-400/60' 
-                : 'border-white/10 opacity-70 hover:opacity-100 hover:bg-white/[0.04]'
+                ? 'opacity-100' 
+                : 'opacity-70 hover:opacity-100'
               }`}
+              style={active === i ? { backgroundColor: 'rgba(122, 157, 40, 0.12)', borderColor: 'var(--color-primary-olive)', borderWidth: '1px' } : { borderColor: 'var(--border-color)', backgroundColor: 'var(--bg-subtle)' }}
             >
               <span className="text-[12px] font-bold camelCase tracking-tighter truncate block"> 0{i + 1}: {p.title}</span>
             </button>

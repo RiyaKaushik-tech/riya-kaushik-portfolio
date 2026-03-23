@@ -14,12 +14,12 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-[78vh] flex items-center overflow-hidden bg-gradient-to-br from-black via-[#060b13] to-[#0c1523] px-6 pt-18 pb-12 text-white">
+    <section id="home" className="relative min-h-[78vh] flex items-center overflow-hidden px-6 pt-18 pb-12" style={{ backgroundColor: 'var(--bg-page)', color: 'var(--text-primary)' }}>
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute -left-24 top-1/4 h-64 w-64 rounded-full bg-cyan-500/8 blur-[80px]" />
-        <div className="absolute right-0 top-1/2 h-[340px] w-[340px] rounded-full bg-blue-500/8 blur-[100px]" />
-        <div className="absolute bottom-14 left-1/4 h-48 w-48 rounded-full bg-cyan-500/5 blur-[70px]" />
+        <div className="absolute -left-24 top-1/4 h-64 w-64 rounded-full blur-[80px]" style={{ background: 'var(--color-glow-green)' }} />
+        <div className="absolute right-0 top-1/2 h-[340px] w-[340px] rounded-full blur-[100px]" style={{ background: 'var(--color-bg-blur)' }} />
+        <div className="absolute bottom-14 left-1/4 h-48 w-48 rounded-full blur-[70px]" style={{ background: 'var(--color-glow-green)' }} />
       </div>
 
       <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
@@ -30,15 +30,15 @@ export default function Hero() {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="lg:col-span-7 space-y-5"
         >
-          <div className="inline-flex items-center gap-2 rounded-sm bg-white/5 px-3 py-1 w-fit">
-            <span className="text-xs font-mono uppercase tracking-[0.3em] text-cyan-300">Featured</span>
+          <div className="inline-flex items-center gap-2 rounded-sm px-3 py-1 w-fit" style={{ backgroundColor: 'var(--bg-subtle)' }}>
+            <span className="text-xs font-mono uppercase tracking-[0.3em]" style={{ color: 'var(--color-primary-olive)' }}>Featured</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight bg-gradient-to-r from-white via-cyan-100 to-blue-200 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(to right, var(--text-primary), var(--color-primary-olive), var(--color-secondary-green))' }}>
             Full-Stack Developer
           </h1>
 
-          <p className="text-base md:text-lg leading-snug text-neutral-300 max-w-2xl">
+          <p className="text-base md:text-lg leading-snug max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
             Building scalable web applications with React, Next.js, Node.js & modern cloud infrastructure. 
             Delivering production-ready solutions for startups and enterprises.
           </p>
@@ -48,7 +48,10 @@ export default function Hero() {
               href="https://github.com/riya1807pro"
               target="_blank"
               rel="noreferrer"
-              className="group relative inline-flex items-center gap-2 rounded-sm bg-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black transition-all duration-300 hover:bg-cyan-400"
+              className="group relative inline-flex items-center gap-2 rounded-sm px-4 py-2 text-xs font-semibold uppercase tracking-wide transition-all duration-300"
+              style={{ backgroundColor: 'var(--color-primary-olive)', color: '#000', cursor: 'pointer' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-olive-light)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-olive)'}
             >
               <FaGithub className="text-[11px]" />
               <span>View GitHub</span>
@@ -57,7 +60,10 @@ export default function Hero() {
 
             <button
               onClick={handleResumeDownload}
-              className="inline-flex items-center gap-2 rounded-sm border border-white/20 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
+              className="inline-flex items-center gap-2 rounded-sm px-4 py-2 text-xs font-semibold uppercase tracking-wide transition-all duration-300"
+              style={{ borderColor: 'var(--color-primary-olive)', borderWidth: '1px', backgroundColor: 'var(--bg-subtle)', color: 'var(--text-primary)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-primary-olive)'; e.currentTarget.style.color = '#000'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--bg-subtle)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
             >
               <FaFileDownload className="text-[11px]" />
               Resume
@@ -67,15 +73,15 @@ export default function Hero() {
           {/* Quick Stats */}
           <div className="grid grid-cols-3 gap-2.5 pt-3">
             {[
-              { value: "6+", label: "Tech Stacks", color: "cyan" },
-              { value: "15+", label: "Projects", color: "indigo" },
-              { value: "100%", label: "Client Satisfaction", color: "emerald" }
-            ].map(({ value, label, color }, i) => (
-              <div key={i} className="group rounded-md border border-white/10 bg-[#08101a] p-3 text-center hover:bg-white/[0.08] transition-all duration-300">
-                <div className={`text-2xl font-black bg-gradient-to-r from-${color}-400 to-${color}-500 bg-clip-text text-transparent mb-1`}>
+              { value: "6+", label: "Tech Stacks" },
+              { value: "15+", label: "Projects" },
+              { value: "100%", label: "Client Satisfaction" }
+            ].map(({ value, label }, i) => (
+              <div key={i} className="group rounded-md border p-3 text-center transition-all duration-300" style={{ borderColor: 'var(--border-color)', backgroundColor: 'var(--bg-card)' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--bg-subtle-strong)'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--bg-card)'; }}>
+                <div className="text-2xl font-black mb-1" style={{ color: 'var(--color-primary-olive)' }}>
                   {value}
                 </div>
-                <p className="text-xs font-mono uppercase tracking-wider text-neutral-400 group-hover:text-white transition-colors">
+                <p className="text-xs font-mono uppercase tracking-wider transition-colors" style={{ color: 'var(--text-muted)' }}>
                   {label}
                 </p>
               </div>
@@ -90,7 +96,7 @@ export default function Hero() {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="lg:col-span-5 relative"
         >
-          <div className="relative rounded-lg bg-white/[0.04] p-4">
+          <div className="relative rounded-lg p-4" style={{ backgroundColor: 'var(--bg-subtle)' }}>
             <div className="relative z-10">
               <img
                 className="w-full rounded-md object-cover aspect-[4/3]"
@@ -98,7 +104,7 @@ export default function Hero() {
                 alt="Full-stack development workflow"
               />
             </div>
-            <div className="absolute -inset-1 bg-cyan-500/8 rounded-lg blur-md -z-10" />
+            <div className="absolute -inset-1 rounded-lg blur-md -z-10" style={{ background: 'var(--color-bg-blur)' }} />
           </div>
         </motion.div>
       </div>

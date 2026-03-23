@@ -69,7 +69,7 @@ export default function ContactForm({ onSubmit, isSubmitting, submitStatus }) {
           disabled={isSubmitting}
           className="group flex items-center gap-3 pt-0.5 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          <span className="bg-gradient-to-r from-indigo-300 via-white to-cyan-300 bg-clip-text text-xl font-light uppercase italic tracking-tight text-transparent md:text-2xl">
+          <span className="bg-clip-text text-xl font-light uppercase italic tracking-tight text-transparent md:text-2xl" style={{ backgroundImage: 'linear-gradient(to right, var(--color-primary-olive), #ffffff, var(--color-primary-olive))' }}>
             {isSubmitting ? "Sending..." : "Submit"}
           </span>
           <span className="flex h-10 w-10 items-center justify-center rounded-full border border-indigo-400/50 bg-indigo-500/10 text-indigo-200 transition-all duration-500 group-hover:bg-white group-hover:text-black">

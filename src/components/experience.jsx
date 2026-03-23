@@ -26,12 +26,12 @@ const experience = {
 
 export default function Experience() {
   return (
-    <section className="relative bg-[#05080f] px-6 py-14 text-white md:py-16">
-      <div className="pointer-events-none absolute right-0 top-14 h-56 w-56 rounded-full bg-cyan-500/8 blur-[85px]" />
+    <section className="relative px-6 py-14 md:py-16" style={{ backgroundColor: 'var(--bg-page)', color: 'var(--text-primary)' }}>
+      <div className="pointer-events-none absolute right-0 top-14 h-56 w-56 rounded-full blur-[85px]" style={{ background: 'var(--color-glow-green)' }} />
 
       <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-6 flex items-center gap-3 opacity-45">
-          <div className="h-[1px] w-8 bg-white" />
+          <div className="mb-6 flex items-center gap-3 opacity-45">
+          <div className="h-[1px] w-8" style={{ backgroundColor: 'var(--text-primary)' }} />
           <span className="text-[10px] font-mono uppercase tracking-[0.25em]">Experience</span>
         </div>
 
@@ -40,27 +40,28 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="rounded-md bg-white/[0.04] p-4 md:p-5"
+          className="rounded-md p-4 md:p-5"
+          style={{ backgroundColor: 'var(--bg-subtle)' }}
         >
           <div className="space-y-4">
             <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
               <h2 className="text-3xl font-semibold tracking-tight uppercase italic leading-none md:text-5xl">
                 {experience.company}
               </h2>
-              <span className="text-xs font-mono uppercase tracking-wider text-neutral-500">
+              <span className="text-xs font-mono uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>
                 {experience.period}
               </span>
             </div>
 
-            <h3 className="text-lg md:text-xl text-cyan-300 font-medium uppercase tracking-tight">
+            <h3 className="text-lg md:text-xl font-medium uppercase tracking-tight" style={{ color: 'var(--color-primary-olive)' }}>
               {experience.role}
             </h3>
 
-            <p className="text-[11px] font-mono uppercase tracking-[0.15em] text-neutral-400">
+            <p className="text-[11px] font-mono uppercase tracking-[0.15em]" style={{ color: 'var(--text-muted)' }}>
               Location: {experience.location}
             </p>
 
-            <p className="text-neutral-300 text-base md:text-base font-light leading-snug max-w-3xl">
+            <p className="text-base md:text-base font-light leading-snug max-w-3xl" style={{ color: 'var(--text-secondary)' }}>
               {experience.description}
             </p>
 
@@ -68,14 +69,15 @@ export default function Experience() {
               {experience.stack.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-sm bg-white/[0.06] px-2.5 py-1 text-[11px] font-mono text-neutral-300 uppercase tracking-wider"
+                  className="rounded-sm px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider"
+                  style={{ backgroundColor: 'var(--bg-subtle-strong)', color: 'var(--text-secondary)' }}
                 >
                   {tech}
                 </span>
               ))}
             </div>
-            <div className="mt-4 border-t border-white/10 pt-3">
-              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Internship Documents</p>
+            <div className="mt-4 border-t pt-3" style={{ borderColor: 'var(--border-color)' }}>
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em]" style={{ color: 'var(--text-muted)' }}>Internship Documents</p>
               <div className="mt-2 flex flex-wrap gap-2">
                 {experience.documents.map((doc) => (
                   <a
@@ -83,7 +85,10 @@ export default function Experience() {
                     href={doc.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 rounded-sm border border-cyan-400/30 bg-cyan-500/10 px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.14em] text-cyan-300 transition-all duration-300 hover:bg-cyan-500/20"
+                    className="inline-flex items-center gap-1 rounded-sm transition-all duration-300"
+                    style={{ border: '1px solid var(--color-primary-olive)', backgroundColor: 'rgba(122, 157, 40, 0.1)', color: 'var(--color-primary-olive)' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(122, 157, 40, 0.2)'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(122, 157, 40, 0.1)'}
                   >
                     <FiFileText className="text-[11px]" />
                     {doc.label}

@@ -19,8 +19,8 @@ const links = [
 export default function ContactSidebar() {
   return (
     <aside className="space-y-6 lg:pl-6">
-      <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-500/10 via-transparent to-cyan-500/10 p-4">
-        <h3 className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-500">Connect</h3>
+      <div className="rounded-2xl border p-4" style={{ borderColor: 'var(--border-color)', backgroundImage: 'linear-gradient(to bottom right, rgba(122, 157, 40, 0.1), transparent, rgba(122, 157, 40, 0.05))' }}>
+        <h3 className="text-[10px] font-mono uppercase tracking-[0.24em]" style={{ color: 'var(--text-muted)' }}>Connect</h3>
         <ul className="mt-3 space-y-2.5">
           {links.map((item) => {
             const Icon = item.icon;
@@ -30,13 +30,16 @@ export default function ContactSidebar() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-between rounded-xl border border-white/10 bg-black/40 px-4 py-2.5 text-sm uppercase tracking-tight text-white transition-colors hover:border-indigo-400/40 hover:text-indigo-300"
+                  className="inline-flex w-full items-center justify-between rounded-xl border px-4 py-2.5 text-sm uppercase tracking-tight transition-colors"
+                  style={{ color: 'var(--text-primary)', borderColor: 'var(--border-color)', backgroundColor: 'var(--bg-subtle-strong)' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--color-primary-olive)'; e.currentTarget.style.color = 'var(--color-primary-olive)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
                 >
                   <span className="inline-flex items-center gap-3">
                     <Icon size={16} />
                     {item.label}
                   </span>
-                  <span className="text-xs text-neutral-500">Open</span>
+                  <span className="text-xs" style={{ color: 'var(--text-muted)' }}>Open</span>
                 </a>
               </li>
             );
@@ -44,16 +47,16 @@ export default function ContactSidebar() {
         </ul>
       </div>
 
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-        <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-500">Response Time</p>
-        <p className="mt-2 text-sm leading-relaxed text-neutral-300">
+      <div className="rounded-2xl border p-4" style={{ borderColor: 'var(--border-color)', backgroundColor: 'var(--bg-subtle)' }}>
+        <p className="text-[10px] font-mono uppercase tracking-[0.24em]" style={{ color: 'var(--text-muted)' }}>Response Time</p>
+        <p className="mt-2 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
           Usually within 24-48 hours for project inquiries.
         </p>
       </div>
 
-      <div className="space-y-3 border-l border-white/10 pl-6">
-        <h3 className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-500">Legal</h3>
-        <p className="text-[10px] uppercase tracking-[0.16em] text-neutral-600">
+      <div className="space-y-3 border-l pl-6" style={{ borderColor: 'var(--border-color)' }}>
+        <h3 className="text-[10px] font-mono uppercase tracking-[0.24em]" style={{ color: 'var(--text-muted)' }}>Legal</h3>
+        <p className="text-[10px] uppercase tracking-[0.16em]" style={{ color: 'var(--text-muted)' }}>
           © 2026 Riya Kaushik. All Rights Reserved.
         </p>
       </div>
